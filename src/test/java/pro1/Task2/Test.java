@@ -9,10 +9,13 @@ public class Test
     @org.junit.Test
     public void test01() throws Exception {
         var k = new FloatCircle(5.8f);
-
         // TODO: Změnit radius na 5.9 (pouze přidáním kódu na tomto místě)
 
-         assertEquals(
+        var r = FloatCircle.class.getDeclaredField("radius");
+        r.setAccessible(true);
+        r.setFloat(k, 5.9f);
+
+        assertEquals(
                  109.3588,
                 k.getArea(),
                 0.01

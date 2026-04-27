@@ -7,6 +7,15 @@ public class Resistor
         this.resistance = resistance;
     }
     public double getCurrent(double voltage) {
-        return voltage / resistance;
+        double result = voltage / resistance;
+        if (!Double.isFinite(result)) {
+            throw new ResistorException("Result is not a valid number: " + result);
+        }
+        return result;
+    }
+    public class ResistorException extends RuntimeException {
+        public ResistorException(String message) {
+            super(message);
+        }
     }
 }
